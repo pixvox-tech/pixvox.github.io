@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<title>Page not found | Pixvox Interactive</title>
+	<meta name="description" content="This page could not be found. Visit the Pixvox Interactive homepage or get in touch with our team.">
+	<meta name="robots" content="noindex">
+	<meta name="theme-color" content="#090c14">
+	<meta name="color-scheme" content="dark">
+	<!-- GitHub Pages serves this file for any missing path, so every URL here is root-absolute -->
+	<link rel="icon" href="/assets/img/brand/favicon.ico" sizes="48x48">
+	<link rel="icon" href="/assets/img/brand/favicon-32.png" type="image/png" sizes="32x32">
+	<link rel="apple-touch-icon" href="/assets/img/brand/apple-touch-icon.png">
+	<link rel="preload" href="/assets/fonts/mona-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" href="/assets/css/main.css">
+	<style>
+		.site-header__cta { display: inline-flex; margin-left: auto; }
+		.not-found {
+			display: grid;
+			align-items: center;
+			min-height: 100svh;
+			padding-block: calc(var(--header-h) + 3rem) 4rem;
+			background: radial-gradient(60rem 40rem at 85% 0%, rgb(var(--navy-glow) / 0.35), transparent 70%);
+		}
+		.not-found__inner { display: grid; justify-items: start; gap: 1.5rem; }
+		.not-found__title {
+			max-width: 14ch;
+			font-size: var(--step-5);
+			font-stretch: 115%;
+			font-weight: 600;
+			letter-spacing: -0.045em;
+			line-height: 0.98;
+		}
+		.not-found__lead { max-width: 34rem; color: var(--text-2); font-size: var(--step-1); line-height: 1.6; }
+		.not-found__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+	</style>
+</head>
+<body>
+	<header class="site-header">
+		<div class="container site-header__inner">
+			<a class="brand" href="/" aria-label="Pixvox Interactive home">
+				<img src="/assets/img/brand/pixvox-logo-272.webp" srcset="/assets/img/brand/pixvox-logo-136.webp 1x, /assets/img/brand/pixvox-logo-272.webp 2x, /assets/img/brand/pixvox-logo-408.webp 3x" alt="" width="136" height="26">
+			</a>
+			<a class="btn btn--primary btn--sm site-header__cta" href="/#contactUs">Contact us</a>
+		</div>
+	</header>
+
+	<main class="not-found" id="main">
+		<div class="container not-found__inner">
+			<p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>Error 404</p>
+			<h1 class="not-found__title">This page <span class="text-gold">isn’t here.</span></h1>
+			<p class="not-found__lead">The link may be out of date, or the page may have moved when we refreshed our website. Everything about our games and platforms is on the homepage.</p>
+			<div class="not-found__actions">
+				<a class="btn btn--primary btn--lg" href="/">Go to the homepage</a>
+				<a class="btn btn--ghost btn--lg" href="/#products">See our products</a>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
