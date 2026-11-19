@@ -335,14 +335,17 @@ function initFilm() {
 	const video = $('video', film);
 	const button = $('[data-film-control]', film);
 	const label = $('[data-film-label]', film);
+	const icon = $('use', button);
 	if (!video || !video.dataset.src) return;
 	let loaded = false;
 	let finished = false; // played through once: from then on it only replays on request
 	let blocked = false; // the browser refused autoplay (e.g. iOS Low Power Mode)
 	let dwell = 0;
 
-	const offer = (text) => {
-		label.textContent = text;
+	// kind: 'play' until the film has been seen, 'replay' after; the label and icon follow it
+	const offer = (kind) => {
+		label.textContent = kind === 'replay' ? 'Replay animation' : 'Play animation';
+		icon.setAttribute('href', `#i-${kind}`);
 		button.hidden = false;
 	};
 	const load = () => {
@@ -365,7 +368,7 @@ function initFilm() {
 				// The file itself failed (the error handler already hid the control): keep the poster, no dead button
 				if (video.error) return;
 				blocked = true;
-				offer(film.classList.contains('is-active') ? 'Replay animation' : 'Play animation');
+				offer(film.classList.contains('is-active') ? 'replay' : 'play');
 			});
 		}
 	};
@@ -374,7 +377,7 @@ function initFilm() {
 	video.addEventListener('ended', () => {
 		finished = true;
 		film.classList.remove('is-playing');
-		offer('Replay animation');
+		offer('replay');
 	});
 	video.addEventListener('error', () => {
 		film.classList.remove('is-playing', 'is-active');
@@ -383,7 +386,7 @@ function initFilm() {
 	button.addEventListener('click', play);
 
 	if (reduceMotion.matches || !('IntersectionObserver' in window)) {
-		offer('Play animation');
+		offer('play');
 		return;
 	}
 	new IntersectionObserver((entries, obs) => {
@@ -401,7 +404,7 @@ function initFilm() {
 			} else if (!video.paused) {
 				video.pause();
 				film.classList.remove('is-playing');
-				if (finished || blocked) offer('Replay animation');
+				if (finished || blocked) offer('replay');
 				else film.classList.remove('is-active'); // first viewing cut short: back to the poster, restart on return
 			}
 		}
